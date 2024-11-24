@@ -5,169 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CollegeBetPro</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon"></div>
-                <h1>CollegeBetPro</h1>
-            </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#teams">Teams</a>
-                <a href="#odds">Odds</a>
-                <a href="#history">History</a>
-            </nav>
-        </header>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="football-icon.svg" alt="Football Icon" class="nav-icon">
+            <span>CollegeBetPro</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Teams</a></li>
+            <li><a href="#">Odds</a></li>
+            <li><a href="#">History</a></li>
+        </ul>
+    </nav>
 
-        <!-- Search Section -->
+    <main class="container">
         <section class="search-section">
-            <h2>Find Your Team</h2>
+            <h1>Find Your Team</h1>
             <div class="search-box">
-                <input type="text" placeholder="Enter college football team name">
-                <button>Search</button>
+                <input type="text" id="teamSearch" placeholder="Enter college football team name">
+                <button id="searchBtn">Search</button>
             </div>
         </section>
 
-        <!-- Team Info -->
-        <section class="team-info">
+        <section id="teamInfo" class="team-info hidden">
             <div class="team-header">
                 <div class="team-logo"></div>
-                <h3>Alabama Crimson Tide</h3>
+                <div class="team-details">
+                    <h2 id="teamName"></h2>
+                    <div class="team-stats">
+                        <div class="stat">
+                            <span class="stat-label">Current Ranking</span>
+                            <span id="teamRanking" class="stat-value"></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Season Record</span>
+                            <span id="teamRecord" class="stat-value"></span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Conference</span>
+                            <span id="teamConference" class="stat-value"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="team-details">
-                <div>
-                    <p>Current Ranking</p>
-                    <strong>#3</strong>
-                </div>
-                <div>
-                    <p>Season Record</p>
-                    <strong>10-1</strong>
-                </div>
-                <div>
-                    <p>Conference</p>
-                    <strong>SEC</strong>
-                </div>
+
+            <div class="upcoming-games">
+                <h3>Upcoming Matchups</h3>
+                <table id="upcomingGamesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Opponent</th>
+                            <th>Spread</th>
+                            <th>Moneyline</th>
+                            <th>Over/Under</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="odds-comparison">
+                <h3>Best Betting Odds</h3>
+                <div id="oddsCards" class="odds-cards"></div>
+            </div>
+
+            <div class="historical-data">
+                <h3>Historical Matchup Data</h3>
+                <table id="historicalGamesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Opponent</th>
+                            <th>Result</th>
+                            <th>Score</th>
+                            <th>Spread</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </section>
+    </main>
 
-        <!-- Upcoming Matchups -->
-        <section class="upcoming-matchups">
-            <h3>Upcoming Matchups</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Opponent</th>
-                        <th>Spread</th>
-                        <th>Moneyline</th>
-                        <th>Over/Under</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nov 25, 2025</td>
-                        <td>Auburn</td>
-                        <td>-7.5</td>
-                        <td>-280</td>
-                        <td>52.5</td>
-                    </tr>
-                    <tr>
-                        <td>Dec 2, 2025</td>
-                        <td>Georgia</td>
-                        <td>+3.5</td>
-                        <td>+150</td>
-                        <td>48.5</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+    <footer>
+        <p>&copy; 2024 CollegeBetPro. All rights reserved.</p>
+    </footer>
 
-        <!-- Betting Odds -->
-        <section class="betting-odds">
-            <h3>Best Betting Odds</h3>
-            <div class="odds-container">
-                <div class="odds-card">
-                    <h4>DraftKings</h4>
-                    <p>Spread: -7.5 (-110)</p>
-                    <p>Moneyline: -280</p>
-                    <p>Over/Under: 52.5 (-110)</p>
-                </div>
-                <div class="odds-card">
-                    <h4>FanDuel</h4>
-                    <p>Spread: -7.5 (-108)</p>
-                    <p>Moneyline: -275</p>
-                    <p>Over/Under: 52.5 (-110)</p>
-                </div>
-                <div class="odds-card">
-                    <h4>BetMGM</h4>
-                    <p>Spread: -7.5 (-110)</p>
-                    <p>Moneyline: -285</p>
-                    <p>Over/Under: 52.5 (-110)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Historical Matchup Data -->
-        <section class="historical-data">
-            <h3>Historical Matchup Data</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Opponent</th>
-                        <th>Result</th>
-                        <th>Score</th>
-                        <th>Spread</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nov 26, 2024</td>
-                        <td>Auburn</td>
-                        <td>W</td>
-                        <td>42-13</td>
-                        <td>-10.5</td>
-                    </tr>
-                    <tr>
-                        <td>Nov 27, 2023</td>
-                        <td>Auburn</td>
-                        <td>W</td>
-                        <td>49-27</td>
-                        <td>-21.5</td>
-                    </tr>
-                    <tr>
-                        <td>Nov 28, 2022</td>
-                        <td>Auburn</td>
-                        <td>W</td>
-                        <td>24-22</td>
-                        <td>-19.5</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div>
-                <h4>About Us</h4>
-                <p>CollegeBetPro provides comprehensive college football betting information to help you make informed decisions.</p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <a href="#home">Home</a>
-                <a href="#teams">Teams</a>
-                <a href="#odds">Odds</a>
-                <a href="#history">History</a>
-            </div>
-            <div>
-                <h4>Contact Us</h4>
-                <p>Email: info@collegebetpro.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-        </footer>
-    </div>
+    <script src="app.js"></script>
 </body>
 </html>
